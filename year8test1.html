@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICT Year 8 Quiz - Blooming Greens High School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>ICT Year 8 Quiz</h1>
+  <div class="subtitle">Blooming Greens High School - Cycle Assessment</div>
+
+  <!-- Name Input Section -->
+  <div class="user-info-box" id="user-info-section">
+    <label for="student-name"><strong>Enter Student Full Name:</strong> <span class="required-star">*</span></label>
+    <input type="text" id="student-name" placeholder="e.g. Ben Miller" oninput="clearNameError()" />
+    <span id="name-error" class="error-msg">Please enter your full name before submitting!</span>
+  </div>
+
+  <div class="stats-bar">
+    <span id="attempt-count">Attempt: 1</span>
+    <span>Questions: 5 per session</span>
+  </div>
+
+  <div id="quiz-body">
+    <!-- 5 Questions dynamically rendered by main.js -->
+  </div>
+
+  <div class="btn-container" id="nav-buttons">
+    <button id="submit-btn" onclick="submitQuiz()">Submit Answers</button>
+  </div>
+
+  <div id="result-box">
+    <h2>Attempt Completed!</h2>
+    <p>Your Score for this session:</p>
+    <div class="score-badge" id="score-percentage">0%</div>
+    <p id="score-details"></p>
+    <p id="save-status" class="save-status-text"></p>
+    
+    <!-- Next Attempt Trigger -->
+    <button onclick="promptNextAttempt()" class="action-btn">Take Another Attempt?</button>
+    
+    <div class="history-log">
+      <h3>Attempt History Log</h3>
+      <ul id="history-list"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Confirmation Prompt for Next Attempt -->
+<div id="attempt-modal" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Start Next Attempt?</h3>
+    <p>You will receive a new batch of 5 random questions. Are you ready for attempt <span id="modal-attempt-num">#2</span>?</p>
+    <div class="modal-buttons">
+      <button onclick="confirmNextAttempt()" class="confirm-btn">Yes, Start Attempt</button>
+      <button onclick="closeAttemptModal()" class="cancel-btn">No, Stay Here</button>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
