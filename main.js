@@ -1,5 +1,6 @@
 // Paste your Google Apps Script Web App URL here:
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-R7Y2w_yIIAuOIYF0JCJksEKK5cB0z3_80UoIghRv41BpUQCgVvN85QOPsvM2es3_/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVIwsszeY4z5U3VVIhqE_agSSUBfmR7cEeBmsAxLkDeOLKW-06AxgHuMlakH-NPeMb/exec";
+
 
 
 // Question bank without stored answer keys in client browser
@@ -40,6 +41,38 @@ let activeBatch = [];
 let userAnswers = {};
 let attemptCounter = 1;
 let historyLog = [];
+let studentName = "";
+let studentClass = "";
+
+function startQuiz(event) {
+  event.preventDefault();
+
+  const nameInput = document.getElementById("student-name");
+  const classInput = document.getElementById("student-class");
+
+  if (!nameInput.value.trim()) {
+    nameInput.classList.add("input-error");
+    nameInput.setAttribute("aria-invalid", "true");
+    document.getElementById("name-error").style.display = "block";
+    nameInput.focus();
+    return;
+  }
+
+  if (!classInput.value) {
+    classInput.classList.add("input-error");
+    classInput.setAttribute("aria-invalid", "true");
+    document.getElementById("class-error").style.display = "block";
+    classInput.focus();
+    return;
+  }
+
+  studentName = nameInput.value.trim();
+  studentClass = classInput.value;
+  document.getElementById("student-summary").innerText = `${studentName} · ${studentClass}`;
+  document.getElementById("landing-page").style.display = "none";
+  document.getElementById("quiz-screen").style.display = "block";
+  startNewAttemptSession();
+}
 
 function shuffleArray(array) {
   let arr = [...array];
@@ -70,13 +103,14 @@ function renderFiveQuestions() {
   activeBatch.forEach((qObj, index) => {
     const card = document.createElement("div");
     card.className = "question-card";
+    card.dataset.questionId = qObj.id;
 
     let optionsHTML = "";
     qObj.options.forEach((opt, optIdx) => {
       const checked = userAnswers[qObj.id] === optIdx ? "checked" : "";
       optionsHTML += `
         <label class="option">
-          <input type="radio" name="q${qObj.id}" value="${optIdx}" ${checked} onchange="saveAnswer(${qObj.id}, ${optIdx})">
+          <input type="radio" name="q${qObj.id}" value="${optIdx}" ${checked} required onchange="saveAnswer(${qObj.id}, ${optIdx})">
           ${opt}
         </label>
       `;
@@ -92,41 +126,64 @@ function renderFiveQuestions() {
 
 function saveAnswer(questionId, optionIdx) {
   userAnswers[questionId] = optionIdx;
+  const card = document.querySelector(`[data-question-id="${questionId}"]`);
+  card.classList.remove("question-unanswered");
+
+  if (activeBatch.every(question => Number.isInteger(userAnswers[question.id]))) {
+    const error = document.getElementById("answer-error");
+    error.textContent = "";
+    error.style.display = "none";
+  }
 }
 
-function validateStudentName() {
-  const nameInput = document.getElementById("student-name");
-  const errorMsg = document.getElementById("name-error");
-  
-  if (!nameInput.value.trim()) {
-    nameInput.classList.add("input-error");
-    errorMsg.style.display = "block";
-    window.scrollTo(0, 0);
-    nameInput.focus();
-    return false;
-  }
-  
-  clearNameError();
-  return true;
+function hasStudentDetails() {
+  return Boolean(studentName.trim() && studentClass);
+}
+
+function validateAnswers() {
+  const unanswered = activeBatch.find(question =>
+    !Number.isInteger(userAnswers[question.id]) ||
+    userAnswers[question.id] < 0 ||
+    userAnswers[question.id] >= question.options.length
+  );
+
+  if (!unanswered) return true;
+
+  const card = document.querySelector(`[data-question-id="${unanswered.id}"]`);
+  card.classList.add("question-unanswered");
+  const error = document.getElementById("answer-error");
+  error.textContent = `Please answer all 5 questions before submitting. Question ${activeBatch.indexOf(unanswered) + 1} needs an answer.`;
+  error.style.display = "block";
+  card.querySelector('input[type="radio"]').focus();
+  card.scrollIntoView({ behavior: "smooth", block: "center" });
+  return false;
 }
 
 function clearNameError() {
   const nameInput = document.getElementById("student-name");
   const errorMsg = document.getElementById("name-error");
   nameInput.classList.remove("input-error");
+  nameInput.setAttribute("aria-invalid", "false");
   errorMsg.style.display = "none";
 }
 
-function submitQuiz() {
-  if (!validateStudentName()) return;
+function clearClassError() {
+  const classInput = document.getElementById("student-class");
+  classInput.classList.remove("input-error");
+  classInput.setAttribute("aria-invalid", "false");
+  document.getElementById("class-error").style.display = "none";
+}
 
-  const studentName = document.getElementById("student-name").value.trim();
+function submitQuiz() {
+  if (!hasStudentDetails() || !validateAnswers()) return;
+
   const submitBtn = document.getElementById("submit-btn");
   submitBtn.disabled = true;
   submitBtn.innerText = "Grading & Submitting...";
 
   const payload = {
     studentName: studentName,
+    studentClass: studentClass,
     attempt: attemptCounter,
     answers: userAnswers
   };
@@ -154,7 +211,7 @@ function submitQuiz() {
 
       updateHistoryUI();
     } else {
-      alert("Error grading test. Please try again.");
+      alert(data.message || "Error grading test. Please try again.");
     }
   })
   .catch(err => {
@@ -189,5 +246,3 @@ function confirmNextAttempt() {
   attemptCounter++;
   startNewAttemptSession();
 }
-
-window.onload = startNewAttemptSession;

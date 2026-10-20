@@ -3,50 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICT Year 8 Quiz - Blooming Greens High School</title>
+  <title>ICT Quiz - Blooming Greens High School</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-  <h1>ICT Year 8 Quiz</h1>
-  <div class="subtitle">Blooming Greens High School - Cycle Assessment</div>
+  <section class="landing-page" id="landing-page">
+    <img class="school-logo" src="assets/school-logo.png" alt="Blooming Greens High School">
+    <h1 class="school-name">Blooming Greens High School</h1>
 
-  <!-- Name Input Section -->
-  <div class="user-info-box" id="user-info-section">
-    <label for="student-name"><strong>Enter Student Full Name:</strong> <span class="required-star">*</span></label>
-    <input type="text" id="student-name" placeholder="e.g. Ben Miller" oninput="clearNameError()" />
-    <span id="name-error" class="error-msg">Please enter your full name before submitting!</span>
-  </div>
+    <form id="student-form" class="student-form" onsubmit="startQuiz(event)">
+      <div class="user-info-box">
+        <label for="student-name">Student's name <span class="required-star">*</span></label>
+        <input type="text" id="student-name" autocomplete="name" required oninput="clearNameError()">
+        <span id="name-error" class="error-msg" role="alert">Please enter your full name.</span>
+      </div>
 
-  <div class="stats-bar">
-    <span id="attempt-count">Attempt: 1</span>
-    <span>Questions: 5 per session</span>
-  </div>
+      <div class="user-info-box">
+        <label for="student-class">Class <span class="required-star">*</span></label>
+        <select id="student-class" required onchange="clearClassError()">
+          <option value="">Choose your year</option>
+          <option value="Year 7">Year 7</option>
+          <option value="Year 8">Year 8</option>
+          <option value="Year 9">Year 9</option>
+          <option value="Year 10">Year 10</option>
+          <option value="Year 11">Year 11</option>
+          <option value="Year 12">Year 12</option>
+        </select>
+        <span id="class-error" class="error-msg" role="alert">Please select your class.</span>
+      </div>
 
-  <div id="quiz-body">
-    <!-- 5 Questions dynamically rendered by main.js -->
-  </div>
+      <button class="start-btn" type="submit">Start quiz <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
 
-  <div class="btn-container" id="nav-buttons">
-    <button id="submit-btn" onclick="submitQuiz()">Submit Answers</button>
-  </div>
+  <section id="quiz-screen" style="display: none;">
+    <h1>ICT Practice Quiz</h1>
+    <div class="subtitle">Blooming Greens High School - Cycle Test 1 Practice</div>
+    <p class="student-summary" id="student-summary"></p>
 
-  <div id="result-box">
-    <h2>Attempt Completed!</h2>
-    <p>Your Score for this session:</p>
-    <div class="score-badge" id="score-percentage">0%</div>
-    <p id="score-details"></p>
-    <p id="save-status" class="save-status-text"></p>
-    
-    <!-- Next Attempt Trigger -->
-    <button onclick="promptNextAttempt()" class="action-btn">Take Another Attempt?</button>
-    
-    <div class="history-log">
-      <h3>Attempt History Log</h3>
-      <ul id="history-list"></ul>
+    <div class="stats-bar">
+      <span id="attempt-count">Attempt: 1</span>
+      <span>Questions: 5 per session</span>
     </div>
-  </div>
+
+    <div id="quiz-body">
+      <!-- 5 Questions dynamically rendered by main.js -->
+    </div>
+
+    <div class="btn-container" id="nav-buttons">
+      <p id="answer-error" class="error-msg answer-error" role="alert"></p>
+      <button id="submit-btn" onclick="submitQuiz()">Submit Answers</button>
+    </div>
+
+    <div id="result-box">
+      <h2>Attempt Completed!</h2>
+      <p>Your Score for this session:</p>
+      <div class="score-badge" id="score-percentage">0%</div>
+      <p id="score-details"></p>
+      <p id="save-status" class="save-status-text"></p>
+
+      <button onclick="promptNextAttempt()" class="action-btn">Take Another Attempt?</button>
+
+      <div class="history-log">
+        <h3>Attempt History Log</h3>
+        <ul id="history-list"></ul>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Modal Confirmation Prompt for Next Attempt -->
