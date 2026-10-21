@@ -86,6 +86,11 @@ h1 {
   color: var(--danger);
 }
 
+.class-availability {
+  color: #666;
+  font-size: 0.85rem;
+}
+
 .user-info-box input,
 .user-info-box select {
   width: 100%;
