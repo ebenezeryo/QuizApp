@@ -1,5 +1,5 @@
 // Paste your Google Apps Script Web App URL here:
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzVIwsszeY4z5U3VVIhqE_agSSUBfmR7cEeBmsAxLkDeOLKW-06AxgHuMlakH-NPeMb/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOcLAWpnRphVHy3XZujq4vWcyXWV7XD71ikZ7LdK1UttquJyP4awUCOaY9e_kd0g/exec";
 
 
 
