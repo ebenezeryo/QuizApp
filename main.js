@@ -140,6 +140,108 @@ const questionBanks = {
     { id: 47, q: "Which aggregate function in a database query counts the total number of records matching specific criteria?", options: ["SUM()", "AVG()", "TOTAL()", "COUNT()"] },
     { id: 48, q: "To find all students born after December 31, 2008, which query criterion should be applied to the DateOfBirth field?", options: ["< #31/12/2008#", "BETWEEN 2008 AND 2009", "> #31/12/2008#", "= #31/12/2008#"] },
     { id: 49, q: "What is the purpose of combining multiple criteria using the AND operator in a database query?", options: ["To return records that match either one criterion or another", "To exclude all records from the output result", "To return only records that satisfy all specified conditions simultaneously", "To sort records alphabetically by field name"] }
+  ],
+  "Year 12": [
+    {"id":0,"q":"What is the primary function of an Operating System (OS)?","options":["To design graphic logos","To run web searches","To manage hardware resources, files, and user execution","To translate vocal commands"]},
+    {"id":1,"q":"Which user interface relies on text-driven commands and prompt syntax?","options":["GUI","WIMP","API","CLI"]},
+    {"id":2,"q":"What does the acronym WIMP stand for in graphical interfaces?","options":["Web, Internet, Media, Programs","Workstation, Integrated, Memory, Processing","Windows, Icons, Menus, Pointer","Wireless, Input, Management, Platform"]},
+    {"id":3,"q":"Which metric is a core characteristic of a Command Line Interface (CLI)?","options":["High GPU resource consumption","Complex point-and-click navigation","Limited customizability","Low system overhead and high script execution speed"]},
+    {"id":4,"q":"Which of the following is an example of a Graphical User Interface (GUI)?","options":["Linux Bash","Windows Command Prompt","PowerShell","Windows 11"]},
+    {"id":5,"q":"Which CLI command lists files and folders in Windows Command Prompt?","options":["cd","mkdir","open","dir /b"]},
+    {"id":6,"q":"Which command is used to create a new directory via the command prompt?","options":["cd","dir","ls","mkdir"]},
+    {"id":7,"q":"Which metric correctly describes a Graphical User Interface (GUI)?","options":["Requires minimal RAM","Offers lower accessibility for beginners","Executes scripts faster than CLI","Consumes higher RAM and graphics processor resources"]},
+    {"id":8,"q":"What is the smallest unit of digital data in a computer system?","options":["Byte","Nibble","Word","Bit"]},
+    {"id":9,"q":"A nibble consists of how many binary bits?","options":["2 bits","8 bits","16 bits","4 bits"]},
+    {"id":10,"q":"How many bits make up one Byte?","options":["4 bits","16 bits","32 bits","8 bits"]},
+    {"id":11,"q":"A standard 'Word' in computer design architecture usually contains how many bits?","options":["8 bits","32 bits","64 bits","16 bits"]},
+    {"id":12,"q":"How many bytes are in 1 Kilobyte (KB)?","options":["1000 bytes","512 bytes","2048 bytes","1024 bytes"]},
+    {"id":13,"q":"Which storage unit equals 2^30 bytes (approximately 1 billion bytes)?","options":["Megabyte (MB)","Terabyte (TB)","Petabyte (PB)","Gigabyte (GB)"]},
+    {"id":14,"q":"Secondary storage devices (e.g., hard disks) differ from RAM because:","options":["They are directly accessible by the CPU","They are volatile temporary storage","They cannot hold digital files","They are non-volatile and not directly accessible by the CPU"]},
+    {"id":15,"q":"What operation is performed when converting from a higher storage unit to a smaller unit?","options":["Addition","Division","Subtraction","Multiplication"]},
+    {"id":16,"q":"What arithmetic operation converts a smaller storage unit to a higher unit?","options":["Multiplication","Exponential","Modulus","Division"]},
+    {"id":17,"q":"Converting 2048 bytes into Kilobytes (KB) yields:","options":["1 KB","4 KB","20.48 KB","2 KB"]},
+    {"id":18,"q":"How many Megabytes (MB) are in 2 Gigabytes (GB)?","options":["2000 MB","1024 MB","4096 MB","2048 MB"]},
+    {"id":19,"q":"How many nibbles are equal to 32 bits?","options":["4 nibbles","16 nibbles","64 nibbles","8 nibbles"]},
+    {"id":20,"q":"Converting 5 Kilobytes (KB) to bytes yields:","options":["5000 bytes","5242 bytes","10245 bytes","5120 bytes"]},
+    {"id":21,"q":"What is a computer file?","options":["A CPU hardware component","A physical folder in a cabinet","A volatile memory block","A structured collection of related data stored under a specific name"]},
+    {"id":22,"q":"What character separates a file name from its file extension?","options":["A comma (,)","A hyphen (-)","A slash (/)","A dot (.)"]},
+    {"id":23,"q":"Which level of the Logical Data Hierarchy comes immediately after Byte/Character?","options":["Bit","Record","Database","Field"]},
+    {"id":24,"q":"In the logical data hierarchy, what is a 'Field'?","options":["A single bit value","A collection of integrated tables","A complete set of student records","A grouping of characters forming a meaningful attribute"]},
+    {"id":25,"q":"Which option represents a 'Record' in logical data organization?","options":["The letter 'A'","An entire database file","An Excel sheet grid","A collection of related fields describing a single entity"]},
+    {"id":26,"q":"Which list correctly orders the logical data hierarchy from smallest to largest?","options":["Database, Record, Field, Bit","Bit, Record, Field, Database","Field, Bit, Record, Database","Bit, Field, Record, Database"]},
+    {"id":27,"q":"Which file extension indicates an executable program file?","options":[".docx",".mp3",".jpg",".exe"]},
+    {"id":28,"q":"What is an integrated collection of logically related files or tables called?","options":["Field","Record","Byte","Database"]},
+    {"id":29,"q":"Which device is an example of non-volatile secondary storage?","options":["RAM","CPU Register","Cache Memory","Hard Drive / USB Flash Drive"]},
+    {"id":30,"q":"What is a spreadsheet application package?","options":["A graphics editing tool","A slideshow design program","An application software used to process data in tabular form (rows and columns)","An operating system service"]},
+    {"id":31,"q":"How is data organized inside a spreadsheet worksheet?","options":["Paragraphs and bullets","Slides and frames","Nodes and vectors","Rows and columns"]},
+    {"id":32,"q":"Which of the following is the most widely used spreadsheet software?","options":["CorelDraw","Photoshop","Access","Microsoft Excel"]},
+    {"id":33,"q":"Which spreadsheet software is developed by Apple?","options":["Lotus 1-2-3","Quattro Pro","OpenOffice Calc","Apple Numbers"]},
+    {"id":34,"q":"Which spreadsheet feature allows users to automate repetitive tasks?","options":["Charts","Worksheets","Cell borders","Macros"]},
+    {"id":35,"q":"Which spreadsheet feature represents data visually?","options":["Macros","Status Bar","Name Box","Charts"]},
+    {"id":36,"q":"Which of the following is NOT a spreadsheet package?","options":["Lotus 1-2-3","LibreOffice Calc","Google Sheets","Microsoft Word"]},
+    {"id":37,"q":"Spreadsheets are primarily designed to process which type of data?","options":["Audio clips","Video frames","Vector shapes","Numerical data"]},
+    {"id":38,"q":"Which cloud-based spreadsheet is accessible via web browsers?","options":["Lotus 1-2-3","Quattro Pro","Kingsoft Desktop","Google Sheets"]},
+    {"id":39,"q":"Managing personal and business budgets is a primary application of:","options":["Presentation packages","Desktop publishing software","Media players","Spreadsheet packages"]},
+    {"id":40,"q":"What is a workbook in Microsoft Excel?","options":["A single cell grid","A toolbar item","A chart template","A single file containing one or more worksheets"]},
+    {"id":41,"q":"What is a cell in a spreadsheet?","options":["An entire workbook page","A menu bar","A graph element","The intersection of a row and a column"]},
+    {"id":42,"q":"How is a cell address designated in Excel?","options":["Row number then Column letter (e.g., 1A)","Column letter only","Row number only","Column letter then Row number (e.g., A1)"]},
+    {"id":43,"q":"What is the currently selected cell with a thick border called?","options":["Formula bar","Inactive cell","Name Box","Active cell"]},
+    {"id":44,"q":"Where is the Fill Handle located on an active cell?","options":["Top left corner","Center","Top right corner","Lower right corner"]},
+    {"id":45,"q":"Which interface box displays the address of the active cell?","options":["Title Bar","Status Bar","Formula Bar","Name Box"]},
+    {"id":46,"q":"Which bar allows entering or editing formulas and data in cells?","options":["Quick Access Toolbar","Scroll Bar","Tab Bar","Formula Bar"]},
+    {"id":47,"q":"Text entered into a cell is commonly referred to as a:","options":["Value","Formula","Operator","Label"]},
+    {"id":48,"q":"Every formula in Microsoft Excel MUST start with which symbol?","options":["#","@","+","="]},
+    {"id":49,"q":"Which keyboard shortcut closes active application windows in Windows?","options":["Ctrl + C","Ctrl + Z","Shift + F5","Alt + F4"]},
+    {"id":50,"q":"Where are window controls (Minimize, Maximize, Close) located?","options":["Bottom left corner","Formula bar","Status bar","Top right corner"]},
+    {"id":51,"q":"Which ribbon tab contains common formatting commands like Bold and Font Color?","options":["Page Layout Tab","Data Tab","View Tab","Home Tab"]},
+    {"id":52,"q":"What is worksheet formatting used for?","options":["Deleting cell values","Closing workbooks","Configuring hardware","Emphasizing data and enhancing presentation"]},
+    {"id":53,"q":"A numerical entry inside a cell is referred to as a:","options":["Label","Macro","Header","Value"]},
+    {"id":54,"q":"Which component allows switching between different worksheets?","options":["Scroll Bars","Zoom Slider","Title Bar","Worksheet Tabs"]},
+    {"id":55,"q":"Which bar at the bottom displays status messages and zoom settings?","options":["Formula Bar","Title Bar","Quick Access Toolbar","Status Bar"]},
+    {"id":56,"q":"Which Excel function sums a range of numbers?","options":["COUNT()","TOTAL()","ADD()","SUM()"]},
+    {"id":57,"q":"Which function calculates the arithmetic mean of a range?","options":["MEAN()","MEDIAN()","SUM()","AVERAGE()"]},
+    {"id":58,"q":"Which function counts only cells containing numeric values?","options":["COUNTA()","SUM()","INDEX()","COUNT()"]},
+    {"id":59,"q":"Which logical function evaluates a condition as TRUE or FALSE?","options":["OR()","AND()","NOT()","IF()"]},
+    {"id":60,"q":"What is the primary purpose of an organizational Corporate House Style?","options":["To authorize software licenses","To encrypt internal files","To guarantee a consistent visual identity across documents","To speed up database execution"]},
+    {"id":61,"q":"Which element is defined within a document house style?","options":["IP Address mapping","Database structure","File compression settings","Mandatory font family and point size"]},
+    {"id":62,"q":"What is a major benefit of enforcing a corporate house style?","options":["Eliminates data validation","Repairs hardware faults","Strengthens brand recognition and reduces formatting errors","Increases drive capacity"]},
+    {"id":63,"q":"Automated spell checking fails to detect which type of error?","options":["Missing XML tags","Incorrect file extensions","Non-numeric values in integer fields","Contextual typos like using 'there' instead of 'their'"]},
+    {"id":64,"q":"How does visual verification (proofreading) differ from software validation?","options":["Visual verification is done by software algorithms","Validation checks document margins","Proofreading is human inspection of layout and context","Validation checks syntax grammar"]},
+    {"id":65,"q":"Which data validation check prevents mandatory fields from being left blank?","options":["Format Check","Range Check","Presence Check","Length Check"]},
+    {"id":66,"q":"An exam score field accepting numbers strictly between 0 and 100 uses which validation?","options":["Character Check","Presence Check","Picture Check","Range Check"]},
+    {"id":67,"q":"A field requiring an exact 11-digit identity number applies which check?","options":["Type Check","Format Check","Length Check","Lookup Check"]},
+    {"id":68,"q":"Which check verifies that input matches a pattern structure like DD/MM/YYYY?","options":["Presence Check","Range Check","Length Check","Format Check (Picture Check)"]},
+    {"id":69,"q":"If a telephone field rejects alphabetical characters, which check is active?","options":["Presence Check","Range Check","Character / Type Check","Length Check"]},
+    {"id":70,"q":"What is the primary function of a chart in a spreadsheet?","options":["To encrypt numerical columns","To align cell text","To visually represent numerical data to identify trends and patterns","To compress flat-file data"]},
+    {"id":71,"q":"Which chart type best shows continuous data trends over time?","options":["Pie Chart","Histogram","Doughnut Chart","Line Graph"]},
+    {"id":72,"q":"When is a Pie Chart most effectively used?","options":["Tracking continuous temperature changes","Plotting high-frequency stock data","Displaying proportions or percentages of a single whole","Comparing non-adjacent series"]},
+    {"id":73,"q":"In a column chart, what does the Value Axis (Y-Axis) represent?","options":["Category labels","Secondary legend key","The numerical scale used for measurement","Background gridlines"]},
+    {"id":74,"q":"What chart element identifies colors or fill patterns assigned to data series?","options":["Category Axis Title","Data Value Label","Chart Header","Legend"]},
+    {"id":75,"q":"Which key is held down to select non-contiguous cells for chart creation?","options":["Shift key","Alt key","Ctrl key","Tab key"]},
+    {"id":76,"q":"When should a Secondary Axis (Dual Axis) be added to a chart?","options":["When plotting continuous text against discrete values","When exploding a pie slice","When plotting two data series with significantly different scales","When formatting 3D gridlines"]},
+    {"id":77,"q":"Which technique pulls out a slice from a Pie Chart for emphasis?","options":["Cropping","Filtering","Segmenting","Exploding (Extracting)"]},
+    {"id":78,"q":"Which chart represents frequency distributions across continuous ranges?","options":["Scatter Plot","Bar Chart","Histogram","Area Chart"]},
+    {"id":79,"q":"What is the function of Data Value Labels printed on chart bars?","options":["Showing cell formulas","Displaying category names","Stating exact numerical values or percentages on data points","Setting scale limits"]},
+    {"id":80,"q":"What is a Flat-File Database?","options":["A database storing data in encrypted XML pages","A database linking tables using foreign keys","A database storing all records in a single table, causing duplication","A cloud-hosted database"]},
+    {"id":81,"q":"What is a key advantage of a Relational Database over a Flat-File Database?","options":["It requires no validation rules","It allows text entries only","It links tables using keys, reducing data redundancy","It eliminates primary key fields"]},
+    {"id":82,"q":"What is a Primary Key in a database table?","options":["A field formatting cell borders","A field containing duplicate records","A field uniquely identifying each record in a table","A form control button"]},
+    {"id":83,"q":"When importing data, what does .csv stand for?","options":["Computerized Standard Values","Centralized System Variable","Calculated Sequence Values","Comma-Separated Values"]},
+    {"id":84,"q":"Which Access data type holds true/false or yes/no values?","options":["Text","AutoNumber","Boolean / Logical (Yes/No)","Currency"]},
+    {"id":85,"q":"Which data type automatically generates sequential unique integers?","options":["Integer","Text","Currency","AutoNumber"]},
+    {"id":86,"q":"Why are telephone numbers assigned Text data type rather than Number?","options":["Number fields hold max 5 digits","Text compresses files faster","To preserve leading zeros and prevent arithmetic operations","Number fields convert values to currency"]},
+    {"id":87,"q":"Which database object provides a graphical interface for entering records?","options":["Query","Report","Table Grid","Form"]},
+    {"id":88,"q":"In database design, what links a table to the Primary Key of a master table?","options":["Calculated Field","Control Label","Foreign Key","Macro Rule"]},
+    {"id":89,"q":"Which data type is best for storing product prices?","options":["Text","AutoNumber","Currency","Boolean"]},
+    {"id":90,"q":"Which database view defines field names, data types, and primary keys?","options":["Form View","Report Wizard","Datasheet View","Design View"]},
+    {"id":91,"q":"What happens when importing a flat .csv file into a relational database?","options":["Primary keys are deleted","Text converts to currency","Delimited text is structured into tables and fields","Validation rules are disabled"]},
+    {"id":92,"q":"Which Access feature restricts input to user selection lists?","options":["AutoNumber Generator","Format Rule Wizard","Lookup Control (Dropdown)","Calculated Field"]},
+    {"id":93,"q":"What is the main function of a Foreign Key?","options":["Counting total tables","Establishing a relationship between two tables","Calculating averages","Encrypting field values"]},
+    {"id":94,"q":"Which Access view displays record rows and columns for direct editing?","options":["Design View","Form Layout View","Structure View","Datasheet View"]},
+    {"id":95,"q":"Why is data validation implemented in database design?","options":["To format tables with colors","To ensure data entered is sensible, reasonable, and accurate","To generate presentation reports","To eliminate primary keys"]},
+    {"id":96,"q":"Which database component extracts specific data matching criteria?","options":["Form","Report","Query","Macro"]},
+    {"id":97,"q":"What is a Calculated Field in a query?","options":["A fixed numerical table column","An auto-incrementing key","A new field created in a query performing calculations on existing fields","A validation rule"]},
+    {"id":98,"q":"Which wildcard symbol represents any number of unknown characters in queries?","options":["Question mark (?)","Exclamation mark (!)","Ampersand (&)","Asterisk (*)"]},
+    {"id":99,"q":"Which query syntax creates a calculated field named 'TotalCost' multiplying 'Price' by 'Quantity'?","options":["TotalCost = Price * Quantity","TotalCost := [Price] x [Quantity]","TotalCost: [Price] * [Quantity]","CALCULATE TotalCost ([Price] * [Quantity])"]}
   ]
 };
 
@@ -150,6 +252,10 @@ let attemptCounter = 1;
 let historyLog = [];
 let studentName = "";
 let studentClass = "";
+
+function getQuestionsPerAttempt(className) {
+  return className === "Year 12" ? 20 : 5;
+}
 
 function startQuiz(event) {
   event.preventDefault();
@@ -176,7 +282,8 @@ function startQuiz(event) {
   }
 
   activeQuestionBank = questionBanks[classInput.value];
-  if (!activeQuestionBank || activeQuestionBank.length < 5) {
+  const questionsPerAttempt = getQuestionsPerAttempt(classInput.value);
+  if (!activeQuestionBank || activeQuestionBank.length < questionsPerAttempt) {
     classInput.classList.add("input-error");
     classInput.setAttribute("aria-invalid", "true");
     const classError = document.getElementById("class-error");
@@ -205,18 +312,19 @@ function shuffleArray(array) {
 
 function startNewAttemptSession() {
   const shuffledBank = shuffleArray(activeQuestionBank);
-  activeBatch = shuffledBank.slice(0, 5);
+  activeBatch = shuffledBank.slice(0, getQuestionsPerAttempt(studentClass));
   userAnswers = {};
 
   document.getElementById("attempt-count").innerText = `Attempt: #${attemptCounter}`;
+  document.getElementById("questions-per-session").innerText = `Questions: ${activeBatch.length} per session`;
   document.getElementById("quiz-body").style.display = "block";
   document.getElementById("nav-buttons").style.display = "flex";
   document.getElementById("result-box").style.display = "none";
   
-  renderFiveQuestions();
+  renderQuestions();
 }
 
-function renderFiveQuestions() {
+function renderQuestions() {
   const container = document.getElementById("quiz-body");
   container.innerHTML = "";
 
@@ -272,7 +380,7 @@ function validateAnswers() {
   const card = document.querySelector(`[data-question-id="${unanswered.id}"]`);
   card.classList.add("question-unanswered");
   const error = document.getElementById("answer-error");
-  error.textContent = `Please answer all 5 questions before submitting. Question ${activeBatch.indexOf(unanswered) + 1} needs an answer.`;
+  error.textContent = `Please answer all ${activeBatch.length} questions before submitting. Question ${activeBatch.indexOf(unanswered) + 1} needs an answer.`;
   error.style.display = "block";
   card.querySelector('input[type="radio"]').focus();
   card.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -356,6 +464,8 @@ function updateHistoryUI() {
 
 function promptNextAttempt() {
   document.getElementById("modal-attempt-num").innerText = `#${attemptCounter + 1}`;
+  document.getElementById("next-attempt-description").innerText =
+    `You will receive a new batch of ${getQuestionsPerAttempt(studentClass)} random questions. Are you ready for attempt #${attemptCounter + 1}?`;
   document.getElementById("attempt-modal").style.display = "flex";
 }
 

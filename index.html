@@ -31,7 +31,7 @@
           <option value="Year 11">Year 11</option>
           <option value="Year 12">Year 12</option>
         </select>
-        <span class="class-availability">Questions are currently available for Years 8, 9, and 11.</span>
+        <span class="class-availability">Questions are currently available for Years 8, 9, 11, and 12.</span>
         <span id="class-error" class="error-msg" role="alert">Please select your class.</span>
       </div>
 
@@ -46,11 +46,11 @@
 
     <div class="stats-bar">
       <span id="attempt-count">Attempt: 1</span>
-      <span>Questions: 5 per session</span>
+      <span id="questions-per-session">Questions per session</span>
     </div>
 
     <div id="quiz-body">
-      <!-- 5 Questions dynamically rendered by main.js -->
+      <!-- Questions dynamically rendered by main.js -->
     </div>
 
     <div class="btn-container" id="nav-buttons">
@@ -79,7 +79,7 @@
 <div id="attempt-modal" class="modal-overlay">
   <div class="modal-content">
     <h3>Start Next Attempt?</h3>
-    <p>You will receive a new batch of 5 random questions. Are you ready for attempt <span id="modal-attempt-num">#2</span>?</p>
+    <p id="next-attempt-description">You will receive a new batch of random questions.</p>
     <div class="modal-buttons">
       <button onclick="confirmNextAttempt()" class="confirm-btn">Yes, Start Attempt</button>
       <button onclick="closeAttemptModal()" class="cancel-btn">No, Stay Here</button>
