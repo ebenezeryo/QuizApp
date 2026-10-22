@@ -63,6 +63,14 @@
       <p>Your Score for this session:</p>
       <div class="score-badge" id="score-percentage">0%</div>
       <p id="score-details"></p>
+      <section class="answer-review" aria-labelledby="answer-review-heading">
+        <h3 id="answer-review-heading">Review your answers</h3>
+        <p class="answer-review-legend">
+          <span class="correct-marker" aria-hidden="true">✓</span> Correct answer
+          <span class="incorrect-marker" aria-hidden="true">×</span> Your incorrect answer
+        </p>
+        <div id="answer-review-list" class="answer-review-list"></div>
+      </section>
       <p id="save-status" class="save-status-text"></p>
 
       <button onclick="promptNextAttempt()" class="action-btn">Take Another Attempt?</button>

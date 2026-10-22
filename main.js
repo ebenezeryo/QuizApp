@@ -349,6 +349,54 @@ const questionBanks = {
   ]
 };
 
+const answerKeys = {
+  "Year 7": [
+    1, 0, 2, 2, 0, 1, 1, 1, 0, 2,
+    1, 0, 1, 0, 2, 0, 1, 0, 2, 0,
+    0, 1, 0, 1, 2, 0, 1, 0, 0, 1,
+    1, 0, 1, 0, 2, 0, 1, 0, 1, 0,
+    0, 1, 0, 0, 1, 0, 1, 0, 2, 0
+  ],
+  "Year 8": [
+    1, 2, 0, 1, 2, 2, 0, 2, 2, 1,
+    1, 1, 1, 1, 2, 2, 0, 1, 1, 1,
+    1, 1, 2, 2, 1, 1, 2, 2, 2, 1
+  ],
+  "Year 9": [
+    0, 1, 0, 0, 0, 0, 3, 1, 0, 0,
+    1, 1, 0, 1, 0, 1, 1, 0, 0, 2,
+    0, 1, 1, 0, 1, 1, 0, 1, 0, 0,
+    0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
+    0, 0, 1, 0, 1, 1, 1, 1, 0, 1
+  ],
+  "Year 10": [
+    2, 1, 2, 0, 3, 0, 2, 1, 0, 1,
+    1, 0, 1, 2, 2, 0, 1, 0, 1, 0,
+    1, 1, 0, 0, 0, 1, 1, 0, 1, 1,
+    0, 0, 1, 1, 1, 0, 1, 0, 1, 0,
+    1, 2, 0, 1, 0, 2, 1, 2, 0, 0
+  ],
+  "Year 11": [
+    2, 3, 2, 3, 2, 2, 3, 2, 3, 2,
+    2, 3, 2, 2, 3, 2, 2, 3, 2, 2,
+    2, 2, 2, 3, 2, 3, 2, 3, 2, 2,
+    3, 2, 2, 2, 3, 2, 2, 2, 2, 2,
+    2, 2, 3, 2, 2, 2, 2, 3, 2, 2
+  ],
+  "Year 12": [
+    2, 3, 2, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    2, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    2, 3, 2, 3, 2, 2, 3, 2, 3, 2,
+    2, 3, 2, 2, 3, 2, 2, 3, 2, 2,
+    2, 2, 2, 3, 2, 3, 2, 3, 2, 2,
+    3, 2, 2, 2, 3, 2, 2, 2, 3, 2
+  ]
+};
+
 let activeBatch = [];
 let activeQuestionBank = [];
 let userAnswers = {};
@@ -392,6 +440,21 @@ function startQuiz(event) {
     classInput.setAttribute("aria-invalid", "true");
     const classError = document.getElementById("class-error");
     classError.textContent = `Questions for ${classInput.value} are not available yet. Please choose a class with available questions.`;
+    classError.style.display = "block";
+    classInput.focus();
+    return;
+  }
+
+  const answerKey = answerKeys[classInput.value];
+  if (!answerKey || activeQuestionBank.some(question =>
+    !Number.isInteger(answerKey[question.id]) ||
+    answerKey[question.id] < 0 ||
+    answerKey[question.id] >= question.options.length
+  )) {
+    classInput.classList.add("input-error");
+    classInput.setAttribute("aria-invalid", "true");
+    const classError = document.getElementById("class-error");
+    classError.textContent = `The answer key for ${classInput.value} is incomplete. Please contact your teacher.`;
     classError.style.display = "block";
     classInput.focus();
     return;
@@ -540,7 +603,8 @@ function submitQuiz() {
       document.getElementById("result-box").style.display = "block";
 
       document.getElementById("score-percentage").innerText = `${data.percent}%`;
-      document.getElementById("score-details").innerText = `Great job, ${studentName}! You scored ${data.score} out of ${data.total} correctly.`;
+      document.getElementById("score-details").innerText = `${studentName}, you scored ${data.score} out of ${data.total} correctly.`;
+      renderAnswerReview();
       document.getElementById("save-status").innerText = "Result recorded in teacher's Google Sheet!";
 
       updateHistoryUI();
@@ -553,6 +617,56 @@ function submitQuiz() {
     submitBtn.disabled = false;
     submitBtn.innerText = "Submit Answers";
     alert("Connection error. Could not submit results.");
+  });
+}
+
+function renderAnswerReview() {
+  const reviewList = document.getElementById("answer-review-list");
+  reviewList.innerHTML = "";
+
+  activeBatch.forEach((question, index) => {
+    const correctOptionIdx = answerKeys[studentClass][question.id];
+    const selectedOptionIdx = userAnswers[question.id];
+    const card = document.createElement("article");
+    card.className = "review-question";
+
+    const title = document.createElement("h4");
+    title.className = "review-question-title";
+    title.innerText = `Q${index + 1}. ${question.q}`;
+    card.appendChild(title);
+
+    const options = document.createElement("ul");
+    options.className = "review-options";
+    question.options.forEach((option, optionIdx) => {
+      const item = document.createElement("li");
+      item.className = "review-option";
+      const marker = document.createElement("span");
+      marker.className = "review-marker";
+      marker.setAttribute("aria-hidden", "true");
+      const label = document.createElement("span");
+      label.className = "sr-only";
+
+      if (optionIdx === correctOptionIdx) {
+        item.classList.add("review-option-correct");
+        marker.innerText = "✓";
+        label.innerText = "Correct answer";
+      } else if (optionIdx === selectedOptionIdx) {
+        item.classList.add("review-option-incorrect");
+        marker.innerText = "×";
+        label.innerText = "Your incorrect answer";
+      } else {
+        marker.innerText = "";
+        label.innerText = "";
+      }
+
+      const optionText = document.createElement("span");
+      optionText.innerText = option;
+      item.append(marker, optionText, label);
+      options.appendChild(item);
+    });
+
+    card.appendChild(options);
+    reviewList.appendChild(card);
   });
 }
 
